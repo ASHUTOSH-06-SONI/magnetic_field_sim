@@ -7,14 +7,14 @@ int main(){
     sf::Vector2f position(400.f, 300.f);
     cir.setPosition(position);
     cir.setRadius(5);
-    position.x = 1270.f; 
-    position.y = 710.f;
     sf::Vector2f vel(200.f,200.f);
+    sf::Vector2f accl(0.f,981.f);
     sf::Clock clock;
     while(window.isOpen()){
         sf::Time elapsed = clock.restart();
         float dt = elapsed.asSeconds();
-        position += vel * dt;
+        vel += accl * dt;
+        position += vel * dt; 
         if(position.x<0){
             position.x = 0; 
             vel.x*=-1;
